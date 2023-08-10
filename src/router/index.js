@@ -4,6 +4,8 @@ import User from "../views/User.vue";
 import Berita from "../views/Berita.vue";
 import Product from "../views/Product.vue";
 import SingleProduct from "../views/SingleProduct.vue";
+import Category from "../views/Category.vue";
+import Login from "../views/Login.vue";
 
 const routes = [
   {
@@ -22,6 +24,11 @@ const routes = [
     component: Berita,
   },
   {
+    path: "/category",
+    name: "Category",
+    component: Category,
+  },
+  {
     path: "/product",
     name: "Product",
     component: Product,
@@ -30,6 +37,12 @@ const routes = [
     path: "/product/:id",
     name: "SingleProduct",
     component: SingleProduct,
+  },
+
+  {
+    path: "/login",
+    name: "Login",
+    component: Login,
   },
 ];
 

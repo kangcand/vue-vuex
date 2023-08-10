@@ -8,6 +8,7 @@ const product = {
 
   getters: {
     getProducts: (state) => state.productData,
+
     //   get single product
     getProductById: (state) => (productId) => {
       console.log("Fetching single product by ID:", productId);
