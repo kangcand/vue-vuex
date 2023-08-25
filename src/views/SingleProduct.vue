@@ -1,6 +1,7 @@
 <template>
     <section class="py-12 sm:py-16">
         <div class="container mx-auto px-4">
+
             <div v-if="product">
                 <nav class="flex">
                     <ol role="list" class="flex items-center">
@@ -41,7 +42,9 @@
                         <div class="lg:flex lg:items-start">
                             <div class="lg:order-2 lg:ml-5">
                                 <div class="max-w-xl overflow-hidden rounded-lg">
-                                    <img class="h-full w-full max-w-full object-cover" :src="product.image" alt="" />
+                                    <img class="h-full w-full max-w-full object-cover"
+                                        src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZHVjdHxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+                                        alt="" />
                                 </div>
                             </div>
 
@@ -49,15 +52,21 @@
                                 <div class="flex flex-row items-start lg:flex-col">
                                     <button type="button"
                                         class="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg border-2 border-gray-900 text-center">
-                                        <img class="h-full w-full object-cover" :src="product.image" alt="" />
+                                        <img class="h-full w-full object-cover"
+                                            src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZHVjdHxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+                                            alt="" />
                                     </button>
                                     <button type="button"
                                         class="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg border-2 border-transparent text-center">
-                                        <img class="h-full w-full object-cover" :src="product.image" alt="" />
+                                        <img class="h-full w-full object-cover"
+                                            src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZHVjdHxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+                                            alt="" />
                                     </button>
                                     <button type="button"
                                         class="flex-0 aspect-square mb-3 h-20 overflow-hidden rounded-lg border-2 border-transparent text-center">
-                                        <img class="h-full w-full object-cover" :src="product.image" alt="" />
+                                        <img class="h-full w-full object-cover"
+                                            src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZHVjdHxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+                                            alt="" />
                                     </button>
                                 </div>
                             </div>
@@ -65,7 +74,7 @@
                     </div>
 
                     <div class="lg:col-span-2 lg:row-span-2 lg:row-end-2">
-                        <h1 class="sm: text-2xl font-bold text-gray-900 sm:text-3xl">{{ product.title }}</h1>
+                        <h1 class="sm: text-2xl font-bold text-gray-900 sm:text-3xl">{{ product.name }}</h1>
 
                         <div class="mt-5 flex items-center">
                             <div class="flex items-center">
@@ -100,35 +109,49 @@
                                         class=""></path>
                                 </svg>
                             </div>
-                            <p class="ml-2 text-sm font-medium text-gray-500">{{ product.rating.rate }}</p>
+                            <!-- <p class="ml-2 text-sm font-medium text-gray-500">{{ product.rating.rate }}</p> -->
                         </div>
 
-                        <h2 class="mt-8 text-base text-gray-900">Category</h2>
+                        <h2 class="mt-8 text-base text-gray-900">Brand</h2>
                         <div class="mt-3 flex select-none flex-wrap items-center gap-1">
                             <label class="">
                                 <input type="radio" name="type" value="Powder" class="peer sr-only" checked />
                                 <p
                                     class="peer-checked:bg-black peer-checked:text-white rounded-lg border border-black px-6 py-2 font-bold">
-                                    {{ product.category }}</p>
+                                    {{ product.name }}</p>
                             </label>
                         </div>
 
                         <div
                             class="mt-10 flex flex-col items-center justify-between space-y-4 border-t border-b py-4 sm:flex-row sm:space-y-0">
                             <div class="flex items-end">
-                                <h1 class="text-3xl font-bold">${{ product.price }}</h1>
+                                <h1 class="text-3xl font-bold">${{ product.base_price }}</h1>
                                 <!-- <span class="text-base">/month</span> -->
                             </div>
-
-                            <button type="button"
-                                class="inline-flex items-center justify-center rounded-md border-2 border-transparent bg-gray-900 bg-none px-12 py-3 text-center text-base font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-gray-800">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 mr-3 h-5 w-5" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                        d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-                                </svg>
-                                Add to cart
-                            </button>
+                            <div v-if="token">
+                                <button type="button"
+                                    class="inline-flex items-center justify-center rounded-md border-2 border-transparent bg-gray-900 bg-none px-12 py-3 text-center text-base font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-gray-800">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 mr-3 h-5 w-5" fill="none"
+                                        viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round"
+                                            d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                                    </svg>
+                                    Add to cart
+                                </button>
+                            </div>
+                            <div v-else>
+                                <router-link to="/login">
+                                    <button type="button"
+                                        class="inline-flex items-center justify-center rounded-md border-2 border-transparent bg-gray-900 bg-none px-12 py-3 text-center text-base font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-gray-800">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 mr-3 h-5 w-5" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                                        </svg>
+                                        + Add to cart
+                                    </button>
+                                </router-link>
+                            </div>
                         </div>
 
                         <ul class="mt-8 space-y-2">
@@ -167,8 +190,8 @@
                             </nav>
                         </div>
 
-                        <div class="mt-8 flow-root sm:mt-12">
-                            <p class="mt-4">{{ product.description }}</p>
+                        <div class="mt-8 flow-root sm:mt-12 flex justify-stretch">
+                            <p class="mt-4 justify-normal">{{ product.metaTitle }}</p>
                         </div>
                     </div>
                 </div>
@@ -184,20 +207,44 @@
 import { mapGetters, mapActions } from "vuex";
 
 export default {
+    data() {
+        return {
+            token: null
+        }
+    },
     computed: {
-        ...mapGetters("product", ["getProductById"]),
+        ...mapGetters("product", ["getProductBySlug"]),
         product() {
-            return this.getProductById(Number(this.$route.params.id));
+            return this.getProductBySlug(this.$route.params.slug);
         },
     },
-    // methods: {
-    //     ...mapActions("product", ["fetchSingleProduct"]),
-    // },
-    // mounted() {
-    //     const productId = this.$route.params.id;
-    //     console.log("Fetching single product with ID:", productId);
-    //     this.fetchSingleProduct(productId);
-    // },
+    methods: {
+        ...mapActions("product", ["fetchSingleProduct", "fetchProducts"]),
+        ...mapActions("cart", ["fetchCart", 'addToCart']),
+
+        async addToCartClicked() {
+            try {
+                await this.addToCart(this.product);
+                alert("Product added to cart!");
+            } catch (error) {
+                alert("Error adding product to cart.");
+                console.error(error);
+            }
+        }
+    },
+    beforeMount() {
+        this.fetchProducts();
+        this.fetchCart()
+    },
+    mounted() {
+        const productSlug = this.$route.params.slug;
+        // console.log("Fetching single product with ID:", productId);
+        this.fetchSingleProduct(productSlug);
+
+        //cek token
+        const cektoken = localStorage.getItem('token');
+        this.token = cektoken
+    },
 
 };
 </script>
