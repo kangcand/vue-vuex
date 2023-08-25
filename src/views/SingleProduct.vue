@@ -129,7 +129,7 @@
                                 <!-- <span class="text-base">/month</span> -->
                             </div>
                             <div v-if="token">
-                                <button type="button"
+                                <button  @click="addToCart(product.id)" type="button"
                                     class="inline-flex items-center justify-center rounded-md border-2 border-transparent bg-gray-900 bg-none px-12 py-3 text-center text-base font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-gray-800">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 mr-3 h-5 w-5" fill="none"
                                         viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -209,7 +209,8 @@ import { mapGetters, mapActions } from "vuex";
 export default {
     data() {
         return {
-            token: null
+            token: null,
+            cek: 1
         }
     },
     computed: {
@@ -219,31 +220,42 @@ export default {
         },
     },
     methods: {
-        ...mapActions("product", ["fetchSingleProduct", "fetchProducts"]),
-        ...mapActions("cart", ["fetchCart", 'addToCart']),
+        ...mapActions("product", ["fetchSingleProduct"]),
+        ...mapActions('product', ['fetchProduct']),
 
-        async addToCartClicked() {
-            try {
-                await this.addToCart(this.product);
-                alert("Product added to cart!");
-            } catch (error) {
-                alert("Error adding product to cart.");
-                console.error(error);
+        // cart
+        ...mapActions('cart', ['fetchCart']),
+
+
+        // add to cart
+        ...mapActions('product', ['addToCart']),
+
+
+        capitalizeFirstLetter(text) {
+            return text.charAt(0).toUpperCase() + text.slice(1);
+        },
+        tambah() {
+            this.cek++
+        },
+        kurang() {
+            if (this.cek > 1) {
+                this.cek--
             }
+
         }
     },
     beforeMount() {
-        this.fetchProducts();
+        this.fetchProduct()
         this.fetchCart()
     },
     mounted() {
-        const productSlug = this.$route.params.slug;
-        // console.log("Fetching single product with ID:", productId);
-        this.fetchSingleProduct(productSlug);
+        const product_slug = this.$route.params.slug;
+        console.log("Fetching single product with Slug:", product_slug);
+        this.fetchSingleProduct(product_slug);
 
-        //cek token
-        const cektoken = localStorage.getItem('token');
-        this.token = cektoken
+        // Authtentication Token
+        const cekToken = localStorage.getItem("token")
+        this.token = cekToken
     },
 
 };
