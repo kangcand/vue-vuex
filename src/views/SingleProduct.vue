@@ -121,6 +121,21 @@
                                     {{ product.name }}</p>
                             </label>
                         </div>
+                        <div class="class= grid md:grid-cols-3 mb-3 mt-3">
+                            <div class="flex items-center border-gray-100">
+                                <!-- Counter Item -->
+                                <span @click="kurang"
+                                    class="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 hover:bg-black hover:text-yellow-50">
+                                    - </span>
+                                <span class="mr-2 ml-2">
+                                    {{ cek }}
+                                </span>
+                                <span @click="tambah"
+                                    class="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-black hover:text-yellow-50">
+                                    + </span>
+                            </div>
+                            <h2 class="font-bold text-black truncate mt-2">Stock : {{ product.stock }}</h2>
+                        </div>
 
                         <div
                             class="mt-10 flex flex-col items-center justify-between space-y-4 border-t border-b py-4 sm:flex-row sm:space-y-0">
@@ -129,7 +144,7 @@
                                 <!-- <span class="text-base">/month</span> -->
                             </div>
                             <div v-if="token">
-                                <button  @click="addToCart(product.id)" type="button"
+                                <button @click="addToCart(product.id)" type="button"
                                     class="inline-flex items-center justify-center rounded-md border-2 border-transparent bg-gray-900 bg-none px-12 py-3 text-center text-base font-bold text-white transition-all duration-200 ease-in-out focus:shadow hover:bg-gray-800">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="shrink-0 mr-3 h-5 w-5" fill="none"
                                         viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
