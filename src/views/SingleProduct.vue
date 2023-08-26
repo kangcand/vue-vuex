@@ -128,7 +128,7 @@
                                     class="cursor-pointer rounded-l bg-gray-100 py-1 px-3.5 duration-100 hover:bg-black hover:text-yellow-50">
                                     - </span>
                                 <span class="mr-2 ml-2">
-                                    {{ cek }}
+                                    {{ counter }}
                                 </span>
                                 <span @click="tambah"
                                     class="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-black hover:text-yellow-50">
@@ -225,7 +225,7 @@ export default {
     data() {
         return {
             token: null,
-            cek: 1
+            counter: 1
         }
     },
     computed: {
@@ -236,31 +236,35 @@ export default {
     },
     methods: {
         ...mapActions("product", ["fetchSingleProduct"]),
-        ...mapActions('product', ['fetchProduct']),
+        ...mapActions('product', ['fetchProducts']),
 
         // cart
         ...mapActions('cart', ['fetchCart']),
 
 
         // add to cart
-        ...mapActions('product', ['addToCart']),
-
-
-        capitalizeFirstLetter(text) {
-            return text.charAt(0).toUpperCase() + text.slice(1);
+        async addToCart(productId) {
+            try {
+                await this.$store.dispatch('product/addToCart', productId);
+                this.fetchCart();
+            } catch (error) {
+                console.error(error);
+            }
         },
+
+
         tambah() {
-            this.cek++
+            this.counter++
         },
         kurang() {
-            if (this.cek > 1) {
-                this.cek--
+            if (this.counter > 1) {
+                this.counter--
             }
 
         }
     },
     beforeMount() {
-        this.fetchProduct()
+        this.fetchProducts()
         this.fetchCart()
     },
     mounted() {
@@ -269,8 +273,8 @@ export default {
         this.fetchSingleProduct(product_slug);
 
         // Authtentication Token
-        const cekToken = localStorage.getItem("token")
-        this.token = cekToken
+        const counterToken = localStorage.getItem("token")
+        this.token = counterToken
     },
 
 };

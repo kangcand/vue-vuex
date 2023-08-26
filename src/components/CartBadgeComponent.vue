@@ -30,6 +30,7 @@ export default {
     beforeMount() {
         this.fetchCart()
 
+
     }
 }
 
