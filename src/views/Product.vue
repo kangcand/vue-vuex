@@ -8,7 +8,7 @@
                         <div
                             class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-h-8 xl:aspect-w-7">
                             <!-- <img :src="product.image" -->
-                            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cHJvZHVjdHxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80"
+                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2dU3hIRKnft40eFVAwTxnEhFRGBGzaVlUaYFKLOlF3-ZRECCi9_oRQbX6u4z37j6K3AU&usqp=CAU"
                                 alt="Tall slender porcelain bottle with natural clay textured body and cork stopper."
                                 class="h-full w-full object-cover object-center group-hover:opacity-75">
                         </div>
