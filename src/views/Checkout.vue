@@ -124,7 +124,7 @@
         </div>
         <div class="mt-10 bg-gray-50 px-4 pt-8 lg:mt-0">
             <p class="text-xl font-medium">Payment Details</p>
-            <p class="text-gray-400">Complete your order by providing your payment details.</p>
+            <p class="text-gray-400">Complete your payment details.</p>
             <div class="">
                 <label for="email" class="mt-4 mb-2 block text-sm font-medium">Email</label>
                 <div class="relative">
