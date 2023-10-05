@@ -197,14 +197,14 @@
 
                 <!-- Total -->
                 <div class="mt-6 border-t border-b py-2">
-                    <!-- <div class="flex items-center justify-between">
+                    <div class="flex items-center justify-between">
                         <p class="text-sm font-medium text-gray-900">Subtotal</p>
                         <p class="font-semibold text-gray-900">$399.00</p>
                     </div>
                     <div class="flex items-center justify-between">
                         <p class="text-sm font-medium text-gray-900">Shipping</p>
                         <p class="font-semibold text-gray-900">$8.00</p>
-                    </div> -->
+                    </div>
                 </div>
                 <div class="mt-6 flex items-center justify-between">
                     <p class="text-sm font-medium text-gray-900">Total</p>
